@@ -80,6 +80,6 @@ theme: anatole
 # Deployment
 deploy:
   type: git
-  repo: https://github.com/rin9o/rin9o.github.io
+  repo: git@github.com:rin9o/rin9o.github.io.git
   branch: gh-pages
   message: Deploy generated pages
