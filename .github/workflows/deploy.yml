@@ -1,0 +1,30 @@
+name: Deploy GitHub Pages on push event
+
+on: [push]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-18.04
+    
+    steps:
+    - uses: actions/checkout@v1
+    - name: Set up Node.js
+      uses: actions/setup-node@v1
+      with:
+        node-version: '10.x'
+    - name: Set up dependecies
+      run: |
+        npm i -g hexo-cli
+        npm i
+    - name: Prepare build environment
+      run: |
+        mkdir -p ~/.ssh/
+        echo "$GH_ACTION_DEPLOY_KEY" > ~/.ssh/id_rsa
+        chmod 600 ~/.ssh/id_rsa
+        ssh-keyscan github.com >> ~/.ssh/known_hosts
+        git config --local user.name 'Ringo Feng'
+        git config --local user.email 'rin9ofeng@gmail.com'
+    - name: Deploy to GitHub Pages
+      run: |
+        hexo generate && hexo deploy
