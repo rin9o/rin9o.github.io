@@ -18,6 +18,8 @@ jobs:
         npm i -g hexo-cli
         npm i
     - name: Prepare build environment
+      env:
+        GH_ACTION_DEPLOY_KEY: ${{secrets.GH_ACTION_DEPLOY_KEY}}
       run: |
         git submodule update --init --recursive
         mkdir -p ~/.ssh/
