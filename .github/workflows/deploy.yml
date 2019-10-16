@@ -23,8 +23,8 @@ jobs:
         echo "$GH_ACTION_DEPLOY_KEY" > ~/.ssh/id_rsa
         chmod 600 ~/.ssh/id_rsa
         ssh-keyscan github.com >> ~/.ssh/known_hosts
-        git config --local user.name 'Ringo Feng'
-        git config --local user.email 'rin9ofeng@gmail.com'
+        git config --global user.name 'Ringo Feng'
+        git config --global user.email 'rin9ofeng@gmail.com'
     - name: Deploy to GitHub Pages
       run: |
         hexo generate && hexo deploy
