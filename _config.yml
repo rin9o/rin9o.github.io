@@ -81,5 +81,5 @@ theme: anatole
 deploy:
   type: git
   repo: git@github.com:rin9o/rin9o.github.io.git
-  branch: gh-pages
+  branch: master
   message: Deploy generated pages
